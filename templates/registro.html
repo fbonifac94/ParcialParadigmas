@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Registro{% endblock %}
+
+{% block content %}
+<div style="margin-left: 5%;">
+    <h2>Registrarse</h2>
+    <span>Complete el formulario para registrarse.</span>
+</div>
+<hr>
+<div style="height: 50%; width: 50%; margin-left: 25%; margin-top: 2%; padding: 1%;">
+    {{ wtf.quick_form(formulario) }}
+</div>
+{% endblock %}

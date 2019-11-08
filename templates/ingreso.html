@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Ingreso{% endblock %}
+
+{% block content %}
+{% if 'usuario' not in session %}
+<div style="margin-left: 5%;">
+    <h2>Ingresar</h2>
+</div>
+<hr>
+<div style="height: 50%; width: 50%; margin-left: 25%; margin-top: 5%; padding: 1%;">
+    <div class="form-group">
+        {{ wtf.quick_form(formulario) }}
+    </div>
+</div>
+{% else %}
+<h1 style="margin-left: 36%;">Ingresó correctamente</h1>
+<hr>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block navbar %}
+<nav class="navbar navbar-inverse">
+    <ul class="nav navbar-nav">
+        <li><a href="/index">Conesa Inc. <span class="sr-only">(current)</span></a></li>
+        <li><a href="/index">Inicio</a></li>
+        <li><a href="/sobre">Sobre</a></li>
+        {% if 'usuario' in session %}
+        <li><a href="/listado">Clientes</a></li>
+        {% endif %}
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+        {% if 'usuario' not in session %}
+        <li><a href="/ingreso">Ingreso</a></li>
+        <li><a href="/registro">Registrarse</a></li>
+        {% else %}
+        <li><a href="/cerrarsesion">Cerrar sesión</a></li>
+        {% endif %}
+    </ul>
+</nav>
+<div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
