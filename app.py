@@ -9,8 +9,8 @@ bootstrap = Bootstrap(app)
 
 app.config['SECRET_KEY'] = 'Hola'
 
-@app.route('/', methods=['GET', ])
-@app.route('/index', methods=['GET', ])
+@app.route('/')
+@app.route('/index')
 def index():
     return render_template('index.html')
 
@@ -45,7 +45,7 @@ def registro():
             flash('Las contraseñas no coinciden.')
     return render_template('registro.html', formulario = registerForm)
 
-@app.route('/listado', methods=['GET',])
+@app.route('/listado')
 def listado():
     if 'usuario' in session:
         rows = []
@@ -58,9 +58,9 @@ def listado():
                 registro = next(archivo_csv, None)
             archivo.close()
             return render_template('listado.html', rows = rows, headers = headers)
-    redirect(url_for('ingreso'))
+    return redirect(url_for('ingreso'))
     
-@app.route('/cerrarsesion', methods=['GET',])
+@app.route('/cerrarsesion')
 def cerrarSesion():
     if 'usuario' in session:
         session.pop('usuario')
