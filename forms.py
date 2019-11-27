@@ -10,5 +10,9 @@ class IngresoForm(FlaskForm):
 class RegistroForm(IngresoForm):
     confirmContrasenia = PasswordField('Reingrese contraseña:', validators=[Required()]);    
     submit = SubmitField('Registrarse');
+
+class ConsultaPaisForm(FlaskForm):
+    pais = StringField('Búsqueda: ')
+    submit = SubmitField('Buscar')
     
     
