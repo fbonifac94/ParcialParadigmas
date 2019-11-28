@@ -136,9 +136,7 @@ def consultaPorPaisTres():
                     if arg in reg and registro[3] not in paises:
                         paises.append(registro[3])
                     registro = next(archivo_csv, None)
-                if len(paises) < 1:
-                    flash('No se encontraron registros relacionados a la búsqueda.')
-                return render_template('consultapaistres.html', formulario = paisForm, paises = paises)
+                return render_template('consultapaistres.html', formulario = paisForm, paises = paises, dosubmit = paisForm.validate_on_submit())
         return render_template('consultapaistres.html', formulario = paisForm)
     return redirect(url_for('ingreso'))
 
